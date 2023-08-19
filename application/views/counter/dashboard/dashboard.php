@@ -34,7 +34,7 @@
     <div class="row my-3">
         <div class="col-6 my-2">
             <a href="<?php echo base_url('counter/transaksi/calculate'); ?>" class="text-dark small font-weight-bold text-decoration-none">
-                <div class="card shadow-sm text-center border-0">
+                <div class="card shadow text-center">
                     <div class="card-body">
                         <p class="h3 m-0 text-info"><i class="ri-car-line"></i></p>
                         Reguler
@@ -45,7 +45,7 @@
 
         <div class="col-6 my-2">
             <a href="<?php echo base_url('counter/transaksi/createjk'); ?>" class="text-dark small font-weight-bold text-decoration-none">
-                <div class="card shadow-sm text-center border-0">
+                <div class="card shadow text-center">
                     <div class="card-body">
                         <p class="h3 m-0 text-danger"><i class="ri-caravan-line"></i></i></p>
                         Premium
@@ -56,7 +56,7 @@
 
         <div class="col-6 my-2">
             <a href="<?php echo base_url('counter/transaksi/riwayat'); ?>" class="text-dark small font-weight-bold text-decoration-none">
-                <div class="card shadow-sm text-center border-0">
+                <div class="card shadow text-center">
                     <div class="card-body">
                         <p class="h3 m-0 text-primary"><i class="ri-file-paper-line"></i></p>
                         Riwayat
@@ -67,7 +67,7 @@
 
         <div class="col-6 my-2">
             <a href="<?php echo base_url('counter/profile'); ?>" class="text-dark small font-weight-bold text-decoration-none">
-                <div class="card shadow-sm text-center border-0">
+                <div class="card shadow text-center">
                     <div class="card-body">
                         <p class="h3 m-0 text-success"><i class="ri-user-line"></i></p>
                         Akun
