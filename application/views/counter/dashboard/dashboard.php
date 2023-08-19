@@ -7,7 +7,7 @@
 </nav>
 
 
-<section class="boot-elemant-bg py-md-5 py-4 hero" style="height: 130px;background-color:rgba(0, 80, 184)">
+<section class="boot-elemant-bg py-md-5 py-4 hero bg-danger" style="height: 130px;">
     <div class="container position-relative py-md-5 py-0">
         <div class="row">
             <div class="container" style="position: absolute;">
