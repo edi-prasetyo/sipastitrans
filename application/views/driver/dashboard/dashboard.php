@@ -18,15 +18,14 @@ $user = $this->user_model->user_detail($user_id); ?>
             <div class="card bg-info shadow-sm my-3">
                 <div class="card-body text-white">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-7">
                             <h4>Rp. <?php echo number_format($user->saldo_driver, 0, ",", "."); ?></h4>
                             <p><a class="text-white" href="<?php echo base_url('driver/saldo'); ?>">Saldo</a></p>
+                            Driver ID : <?php echo $user->id; ?>
 
                         </div>
-                        <div class="col-3">
-                            Driver ID : <div class="display-4"><?php echo $user->id; ?></div>
-                        </div>
-                        <div class="col-3">
+
+                        <div class="col-5">
                             <span style="font-size: 40px;">
                                 <i class="ri-wallet-line"></i>
                             </span>
@@ -55,7 +54,7 @@ $user = $this->user_model->user_detail($user_id); ?>
         </div>
     </div>
 <?php else : ?>
-    <div class="col-md-7 mx-auto">
+    <div class="col-md-7 mx-auto mb-5">
         <?php foreach ($transaksi_driver as $data) : ?>
 
             <div class="col-12 mx-auto mb-3">
@@ -77,18 +76,28 @@ $user = $this->user_model->user_detail($user_id); ?>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header row">
-                    <div class="col-6">
-                        <?php echo date('j M Y', strtotime($data->date_created)); ?> - <?php echo date('H:i:s', strtotime($data->date_created)); ?>
-                    </div>
-                    <div class="col-6 text-right">
-                        <?php echo $data->order_id; ?>
+            <div class="card my-5 pb-5">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">
+                            <?php echo date('j M Y', strtotime($data->date_created)); ?> - <?php echo date('H:i:s', strtotime($data->date_created)); ?>
+                        </div>
+                        <div class="col-6 text-right">
+                            <?php echo $data->order_id; ?>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="<?php echo base_url('driver/transaksi/terima/' . $data->id); ?>" class="btn btn-success btn-block">Terima</a>
+                        </div>
+                    </div>
                     <div class="card-body text-center">
-                        <p><?php echo $data->start_price; ?></p>
+                        <small>Harga</small>
+                        <p><b><?php echo number_format($data->price, 0, ",", "."); ?></b></p>
+                        <small>Service Charge</small>
+                        <p><b><?php echo number_format($data->charge, 0, ",", "."); ?></b></p>
                         <h3 class="font-weight-bold"> Rp <?php echo number_format($data->total_price, 0, ",", "."); ?> </h3>
                         <span class="text-muted">
                             <?php if ($data->product_id == 1) : ?>
@@ -96,11 +105,7 @@ $user = $this->user_model->user_detail($user_id); ?>
                     <?php else : ?>
                     <?php endif; ?>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="<?php echo base_url('driver/transaksi/terima/' . $data->id); ?>" class="btn btn-success btn-block">Terima</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 

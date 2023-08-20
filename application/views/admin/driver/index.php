@@ -36,19 +36,28 @@
             <thead class="thead-light">
                 <tr>
                     <th>No</th>
-                    <th>ID Driver</th>
+                    <th>ID </th>
+                    <th>Onroad </th>
                     <th>Nama</th>
                     <th>Saldo</th>
                     <th>Status</th>
                     <th>Locked</th>
-                    <th width="15%">Action</th>
+                    <th width="20%">Action</th>
                 </tr>
             </thead>
             <?php $no = 1;
             foreach ($main_agen as $data) { ?>
                 <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $data->user_code; ?></td>
+                    <td><?php echo $data->id; ?></td>
+                    <td>
+                        <?php if ($data->status == 1) : ?>
+                            <div class="badge badge-danger">Yes</div>
+                        <?php else : ?>
+                            <div class="badge badge-success">No</div>
+                        <?php endif; ?>
+
+                    </td>
                     <td><?php echo $data->name; ?></td>
                     <td>Rp. <?php echo number_format($data->saldo_driver, 0, ",", "."); ?></td>
                     <td>

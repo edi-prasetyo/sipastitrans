@@ -21,14 +21,18 @@
                         </div>
                         <div class="col-5 text-right">
                             Rp. <?php echo number_format($transaksi->total_price, 0, ",", "."); ?><br>
-                            <?php if ($transaksi->status == 'Mencari Pengemudi') : ?>
-                                <div class="badge badge-primary"><?php echo $transaksi->status; ?></div>
-                            <?php elseif ($transaksi->status == 'Dalam Pengantaran') : ?>
-                                <div class="badge badge-info"><?php echo $transaksi->status; ?></div>
-                            <?php elseif ($transaksi->status == 'Selesai') : ?>
-                                <div class="badge badge-success"><?php echo $transaksi->status; ?></div>
+                            <?php if ($transaksi->stage == 1) : ?>
+                                <div class="badge badge-warning">Belum dikirim ke Driver</div>
+                            <?php elseif ($transaksi->stage == 2) : ?>
+                                <div class="badge badge-info">Di terima driver</div>
+                            <?php elseif ($transaksi->stage == 3) : ?>
+                                <div class="badge badge-primary">Dalam Pengantaran</div>
+                            <?php elseif ($transaksi->stage == 4) : ?>
+                                <div class="badge badge-success">Selesai</div>
+                            <?php elseif ($transaksi->stage == 5) : ?>
+                                <div class="badge badge-danger">Ditolak Driver</div>
                             <?php else : ?>
-                                <div class="badge badge-danger"><?php echo $transaksi->status; ?></div>
+                                <div class="badge badge-danger"></div>
                             <?php endif; ?>
                         </div>
                     </div>
