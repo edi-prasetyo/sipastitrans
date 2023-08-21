@@ -11,9 +11,9 @@
     <div class="card shadow-sm border-0">
         <div class="card-header bg-white">
             <?php if ($saldo->pemasukan == 0) : ?>
-                <span class="text-danger"> <i class="ri-indeterminate-circle-line"></i> Rp. <?php echo $saldo->pengeluaran; ?></span>
+                <span class="text-danger"> <i class="ri-indeterminate-circle-line"></i> Rp. <?php echo $saldo->pengeluaran; ?> + <?php echo $saldo->charge; ?></span>
             <?php elseif ($saldo->pengeluaran == 0) : ?>
-                <span class="text-success"> <i class="ri-add-circle-line"></i> Rp. <?php echo $saldo->pemasukan; ?></span>
+                <span class="text-success"> <i class="ri-add-circle-line"></i> Rp. <?php echo $saldo->pemasukan; ?> </span>
             <?php else : ?>
             <?php endif; ?>
         </div>

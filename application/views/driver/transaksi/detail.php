@@ -59,6 +59,19 @@
                         <td>Total Harga</td>
                         <td class="text-right">Rp. <?php echo number_format($transaksi->total_price, 0, ",", "."); ?></td>
                     </tr>
+                    <tr>
+                        <td class="text-danger">Fee + Charge</td>
+                        <td class="text-right text-danger"><?php echo $fee; ?> % + <?php echo number_format($transaksi->charge, 0, ",", "."); ?> </td>
+                    </tr>
+                    <tr>
+                        <td class="text-success">Pendapatan Driver</td>
+                        <td class="text-right text-success">
+                            <?php
+                            $transaksi_fee = ($fee / 100) * $transaksi->price;
+                            $pendapatan_bersih = $transaksi->price - $transaksi_fee; ?>
+                            <?php echo number_format($pendapatan_bersih, 0, ",", "."); ?>
+                        </td>
+                    </tr>
 
 
                 </tbody>

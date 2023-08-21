@@ -216,6 +216,14 @@ class Transaksi_model extends CI_Model
     $query = $this->db->get();
     return $query->row();
   }
+  public function getOrderId($order_id)
+  {
+    $this->db->select('*');
+    $this->db->from('transaksi');
+    $this->db->where('transaksi.order_id', $order_id);
+    $query = $this->db->get();
+    return $query->row();
+  }
   public function transaksi_detail($id)
   {
     $this->db->select('transaksi.*, user.user_code, user.name');

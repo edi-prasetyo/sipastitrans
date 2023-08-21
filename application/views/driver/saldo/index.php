@@ -26,7 +26,7 @@
                             <?php if ($saldo->pengeluaran == 0) : ?>
                                 <span class="text-success"> + Rp. <?php echo number_format($saldo->pemasukan, 0, ",", "."); ?></span>
                             <?php else : ?>
-                                <span class="text-danger"> - Rp. <?php echo number_format($saldo->pengeluaran, 0, ",", "."); ?></span>
+                                <span class="text-danger"> - Rp. <?php echo number_format($saldo->pengeluaran, 0, ",", "."); ?> + <?php echo $saldo->charge; ?></span>
                             <?php endif; ?>
                         </div>
                     </div>

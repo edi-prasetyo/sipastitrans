@@ -65,22 +65,24 @@ class Transaksi extends CI_Controller
         $pemotongan = $persentase->potong_saldo;
 
         $potong_saldo = ($pemotongan / 100) * $transaksi->price;
-        $saldo_driver = $user->saldo_driver - $potong_saldo;
+        $service_charge = $transaksi->charge;
+        $saldo_driver = $user->saldo_driver - $potong_saldo - $service_charge;
 
         $data = [
             'id'                => $user_id,
             'saldo_driver'      => $saldo_driver,
         ];
         $this->user_model->update($data);
-        $this->create_saldo_driver($user_id, $potong_saldo, $transaksi, $saldo_driver);
+        $this->create_saldo_driver($user_id, $potong_saldo, $transaksi, $saldo_driver, $service_charge);
     }
     // Create Riwayat Saldo Driver
-    public function create_saldo_driver($user_id, $potong_saldo, $transaksi, $saldo_driver)
+    public function create_saldo_driver($user_id, $potong_saldo, $transaksi, $saldo_driver, $service_charge)
     {
         $data = [
             'user_id'       => $user_id,
             'pemasukan'     => 0,
             'pengeluaran'   => $potong_saldo,
+            'charge'        => $service_charge,
             'transaksi'     => $transaksi->price,
             'keterangan'    => $transaksi->order_id,
             'total_saldo'   => $saldo_driver,
@@ -206,9 +208,14 @@ class Transaksi extends CI_Controller
     public function detail($id)
     {
         $transaksi = $this->transaksi_model->detail($id);
+        $persentase = $this->persentase_model->get_persentase();
+        $fee = $persentase->potong_saldo;
+        // var_dump($fee);
+        // die;
         $data = [
             'title'                 => 'Data Transaksi',
             'transaksi'             => $transaksi,
+            'fee'            => $fee,
             'content'               => 'driver/transaksi/detail'
         ];
         $this->load->view('driver/layout/wrapp', $data, FALSE);
